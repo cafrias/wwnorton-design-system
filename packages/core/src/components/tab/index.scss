@@ -1,0 +1,100 @@
+@forward 'tokens';
+@use 'sass:map';
+@use 'sass:meta';
+@use 'tokens';
+@use '../../a11y';
+@use '../../color';
+@use '../../type';
+@use '../../motion';
+@use '../../spacing';
+@use '../../util';
+
+@mixin base {
+	--nds-tab-border-width: #{tokens.$border-width};
+	--nds-tab-padding-x: #{tokens.$padding-x};
+	--nds-tab-padding-y: #{tokens.$padding-y};
+	--nds-tab-border-radius: #{tokens.$border-radius};
+
+	position: relative;
+	display: inline-flex;
+	box-sizing: border-box;
+	padding: var(--nds-tab-padding-y) var(--nds-tab-padding-x);
+	border: 0 solid transparent;
+	border-top: var(--nds-tab-border-width) solid transparent;
+	border-bottom: var(--nds-tab-border-width) solid transparent;
+	border-radius: var(--nds-tab-border-radius);
+	justify-content: center;
+	align-items: center;
+
+	@include type.ui-base;
+
+	&:disabled,
+	&.disabled {
+		color: var(--nds-disabled-color);
+		cursor: not-allowed;
+	}
+}
+
+@mixin variant(
+	$text-color: null,
+	$background-color: null,
+) {
+	font-size: var(--nds-font-size-sm);
+	color: $text-color;
+	cursor: pointer;
+	background-color: $background-color;
+	transition:
+		motion.transition(
+			color
+			background-color
+			border-color
+			border-radius
+			box-shadow
+		);
+}
+
+@mixin contained {
+	@include variant(
+		$text-color: var(--nds-navy-90),
+		$background-color: var(--nds-gray-30),
+	);
+
+	margin-right: 0.1rem;
+
+	&:last-child {
+		margin-right: 0;
+	}
+
+	&:disabled,
+	&.disabled {
+		color: var(--nds-gray-50);
+	}
+
+	&:not(:disabled):not(.disabled).selected {
+		font-weight: bold;
+		background-color: var(--nds-gray-10);
+		border-bottom: 4px solid var(--nds-teal-50);
+	}
+
+	&:not(:disabled):not(.disabled):hover,
+	&:not(:disabled):not(.disabled).hover {
+		background-color: var(--nds-navy-30);
+	}
+
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active {
+		background-color: var(--nds-gray-40);
+	}
+}
+
+@mixin style {
+	@include util.declare('tab') {
+		.nds-tab {
+			@include base;
+		}
+
+		.nds-tab--contained {
+			@include contained;
+		}
+	}
+}

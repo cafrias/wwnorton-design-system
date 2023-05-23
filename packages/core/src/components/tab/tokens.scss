@@ -1,0 +1,7 @@
+@use '../../spacing';
+
+$grade: 60 !default;
+$border-width: 4px !default;
+$padding-x: calc(#{spacing.spacer('button-x')}) !default;
+$padding-y: calc(#{spacing.spacer('button-x')} - var(--nds-tab-border-width)) !default;
+$border-radius: 0 !default;

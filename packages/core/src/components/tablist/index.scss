@@ -1,0 +1,14 @@
+@use '../../util';
+
+@mixin base {
+	display: flex;
+	border-bottom: 1px solid var(--nds-navy-40);
+}
+
+@mixin style {
+	@include util.declare('tab-list') {
+		.nds-tab-list {
+			@include base;
+		}
+	}
+}
