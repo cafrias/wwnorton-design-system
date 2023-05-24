@@ -4,7 +4,7 @@ const DEFAULT_SCROLL_DELTA = 100;
 const DEFAULT_CORRECTION_DELTA = 100;
 
 function isScrolledToBottom(el: HTMLDivElement) {
-	return el.scrollWidth - el.scrollLeft === el.clientWidth;
+	return el.scrollWidth - el.scrollLeft <= el.clientWidth;
 }
 
 function isScrolledToTop(el: HTMLDivElement) {
