@@ -89,7 +89,7 @@
 @mixin line {
 	@include variant(
 		$text-color: var(--nds-navy-90),
-		$background-color: var(--nds-white),
+		$background-color: transparent,
 	);
 
 	&:disabled,
