@@ -2,6 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { TabListProps, TabProps } from './types';
 import { TabScrollButton } from './TabScrollButton';
+import { useTabsState } from './context';
 
 const BASE_NAME = 'nds-tab-list';
 
@@ -36,9 +37,10 @@ function useTabListScroll(ref: React.RefObject<HTMLDivElement>, scrollDelta = 10
 	};
 }
 
-export const TabList = ({ align = 'left', children }: TabListProps) => {
+export const TabList = ({ children }: TabListProps) => {
 	const tabListRef = React.useRef<HTMLDivElement>(null);
 	const { moveLeft, moveRight } = useTabListScroll(tabListRef);
+	const { align } = useTabsState();
 
 	const className = classNames(
 		styles.base,

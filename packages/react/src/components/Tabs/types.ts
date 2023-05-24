@@ -2,21 +2,27 @@ import React from 'react';
 
 export type TabsProps = ControlledTabsProps | UncontrolledTabsProps;
 
-export type ControlledTabsProps = React.PropsWithChildren<{
+export type ControlledTabsProps = CommonTabsProps & {
 	selectedIndex: number;
 	onChange: (selectedIndex: number) => void;
-	idPrefix?: string;
-}>;
+};
 
-export type UncontrolledTabsProps = React.PropsWithChildren<{
+export type UncontrolledTabsProps = CommonTabsProps & {
 	defaultSelectedIndex?: number;
+};
+
+/**
+ * Props used by both controlled and uncontrolled tabs.
+ */
+export type CommonTabsProps = React.PropsWithChildren<{
 	idPrefix?: string;
+	align?: 'left' | 'center';
+	variant?: 'contained' | 'line';
 }>;
 
 export type TabListProps = React.ComponentPropsWithRef<'div'> & {
 	isSelected?: boolean;
 	onSelect?: (index: number) => void;
-	align?: 'left' | 'center';
 };
 
 export type TabProps = React.PropsWithChildren<{
@@ -36,4 +42,6 @@ export interface TabsState {
 	idPrefix: string;
 	selectedTabIndex: number;
 	setSelectedTabIndex: (index: number) => void;
+	variant: NonNullable<CommonTabsProps['variant']>;
+	align: NonNullable<CommonTabsProps['align']>
 }

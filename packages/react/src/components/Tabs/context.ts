@@ -2,43 +2,57 @@ import React, {
 	useMemo, useState,
 } from 'react';
 import {
+	CommonTabsProps,
 	ControlledTabsProps, TabsState, UncontrolledTabsProps,
 } from './types';
 import { useId } from '../../utilities';
 
 export const TabsContext = React.createContext<TabsState | null>(null);
 
-export function useInitUncontrolledTabsState({
+function useInitCommonTabsState({
+	align,
 	idPrefix: userSetIdPrefix,
-	defaultSelectedIndex,
-}: UncontrolledTabsProps): TabsState {
+	variant,
+}: CommonTabsProps): Omit<TabsState, 'selectedTabIndex' | 'setSelectedTabIndex'> {
 	const generatedIdPrefix = useId() as string;
 	const idPrefix = userSetIdPrefix || generatedIdPrefix;
+
+	return useMemo(() => ({
+		idPrefix,
+		align: align || 'left',
+		variant: variant || 'contained',
+	}), [align, idPrefix, variant]);
+}
+
+export function useInitUncontrolledTabsState({
+	defaultSelectedIndex,
+	...rest
+}: UncontrolledTabsProps): TabsState {
+	const commonState = useInitCommonTabsState(rest);
 
 	const [selected, setSelected] = useState(defaultSelectedIndex || 0);
 
 	const state: TabsState = useMemo(() => ({
-		idPrefix,
+		...commonState,
 		selectedTabIndex: selected,
 		setSelectedTabIndex: setSelected,
-	}), [idPrefix, selected, setSelected]);
+	}), [commonState, selected, setSelected]);
 
 	return state;
 }
 
 export function useInitControlledTabsState({
-	idPrefix: userSetIdPrefix,
 	onChange,
 	selectedIndex,
+	...rest
 }: ControlledTabsProps): TabsState {
-	const generatedIdPrefix = useId() as string;
-	const idPrefix = userSetIdPrefix || generatedIdPrefix;
+	const commonState = useInitCommonTabsState(rest);
 
 	const state: TabsState = useMemo(() => ({
-		idPrefix,
+		...commonState,
 		selectedTabIndex: selectedIndex,
 		setSelectedTabIndex: onChange,
-	}), [idPrefix, onChange, selectedIndex]);
+	}), [commonState, onChange, selectedIndex]);
 
 	return state;
 }

@@ -70,8 +70,8 @@ export const Controlled = ({ selectedIndex }: ControlledTabsProps) => {
 
 export const Centered = () => (
 	<div style={{ maxWidth: '960px' }}>
-		<Tabs defaultSelectedIndex={0}>
-			<TabList align="center">
+		<Tabs align="center" defaultSelectedIndex={0}>
+			<TabList>
 				<Tab>Cats</Tab>
 				<Tab>Dogs</Tab>
 				<Tab>Horses</Tab>
