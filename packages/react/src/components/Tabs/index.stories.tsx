@@ -68,6 +68,27 @@ export const Controlled = ({ selectedIndex }: ControlledTabsProps) => {
 	);
 };
 
+export const Centered = () => (
+	<div style={{ maxWidth: '960px' }}>
+		<Tabs defaultSelectedIndex={0}>
+			<TabList align="center">
+				<Tab>Cats</Tab>
+				<Tab>Dogs</Tab>
+				<Tab>Horses</Tab>
+				<Tab>Cows</Tab>
+				<Tab disabled>Beavers</Tab>
+			</TabList>
+			<TabPanels>
+				<TabPanel>Cats content</TabPanel>
+				<TabPanel>Dogs content</TabPanel>
+				<TabPanel>Horses content</TabPanel>
+				<TabPanel>Cows content</TabPanel>
+				<TabPanel>Beavers content</TabPanel>
+			</TabPanels>
+		</Tabs>
+	</div>
+);
+
 Controlled.args = {
 	selectedIndex: 1,
 };

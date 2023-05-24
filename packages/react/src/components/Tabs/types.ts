@@ -16,6 +16,7 @@ export type UncontrolledTabsProps = React.PropsWithChildren<{
 export type TabListProps = React.ComponentPropsWithRef<'div'> & {
 	isSelected?: boolean;
 	onSelect?: (index: number) => void;
+	align?: 'left' | 'center';
 };
 
 export type TabProps = React.PropsWithChildren<{

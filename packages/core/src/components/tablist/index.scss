@@ -12,10 +12,26 @@
 	}
 }
 
+@mixin left {
+	justify-content: flex-start;
+}
+
+@mixin centered {
+	justify-content: center;
+}
+
 @mixin style {
 	@include util.declare('tab-list') {
 		.nds-tab-list {
 			@include base;
+		}
+
+		.nds-tab-list--left {
+			@include left;
+		}
+
+		.nds-tab-list--centered {
+			@include centered;
 		}
 	}
 }
