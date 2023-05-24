@@ -7,6 +7,7 @@ import { useTabsState } from './context';
 interface TabScrollButtonProps {
 	type: 'left' | 'right';
 	onClick: () => void;
+	disabled?: boolean;
 }
 
 const BASE_NAME = 'nds-tab-scroll-button';
@@ -18,10 +19,10 @@ const styles = {
 	text: `${BASE_NAME}__text`,
 };
 
-export const TabScrollButton = ({ type, onClick }: TabScrollButtonProps) => {
+export const TabScrollButton = ({ type, onClick, disabled }: TabScrollButtonProps) => {
 	const text = type === 'left' ? 'Previous' : 'Next';
 	const icon = type === 'left' ? 'chevron-left' : 'chevron-right';
-	const { variant } = useTabsState();
+	const { variant, unmountScroll } = useTabsState();
 
 	const className = classNames(
 		styles.base,
@@ -31,8 +32,18 @@ export const TabScrollButton = ({ type, onClick }: TabScrollButtonProps) => {
 		},
 	);
 
+	if (disabled && unmountScroll) {
+		return null;
+	}
+
 	return (
-		<BaseButton className={className} onClick={onClick}>
+		<BaseButton
+			className={className}
+			onClick={onClick}
+			aria-hidden
+			tabIndex={-1}
+			disabled={disabled}
+		>
 			<Icon variant={icon} />
 			<span className={styles.text}>{text}</span>
 		</BaseButton>

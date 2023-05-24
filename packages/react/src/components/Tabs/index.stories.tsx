@@ -25,9 +25,9 @@ export const Uncontrolled = () => (
 			<TabList>
 				<Tab>Cats</Tab>
 				<Tab>Dogs</Tab>
-				<Tab>Horses</Tab>
+				<Tab disabled>Horses</Tab>
 				<Tab>Cows</Tab>
-				<Tab disabled>Beavers</Tab>
+				<Tab>Beavers</Tab>
 			</TabList>
 			<TabPanels>
 				<TabPanel>Cats content</TabPanel>
@@ -76,7 +76,7 @@ export const Centered = () => (
 				<Tab>Dogs</Tab>
 				<Tab>Horses</Tab>
 				<Tab>Cows</Tab>
-				<Tab disabled>Beavers</Tab>
+				<Tab>Beavers</Tab>
 			</TabList>
 			<TabPanels>
 				<TabPanel>Cats content</TabPanel>
@@ -95,9 +95,30 @@ export const Line = () => (
 			<TabList>
 				<Tab>Cats</Tab>
 				<Tab>Dogs</Tab>
-				<Tab>Horses</Tab>
+				<Tab disabled>Horses</Tab>
 				<Tab>Cows</Tab>
-				<Tab disabled>Beavers</Tab>
+				<Tab>Beavers</Tab>
+			</TabList>
+			<TabPanels>
+				<TabPanel>Cats content</TabPanel>
+				<TabPanel>Dogs content</TabPanel>
+				<TabPanel>Horses content</TabPanel>
+				<TabPanel>Cows content</TabPanel>
+				<TabPanel>Beavers content</TabPanel>
+			</TabPanels>
+		</Tabs>
+	</div>
+);
+
+export const unmountScroll = () => (
+	<div style={{ maxWidth: '960px' }}>
+		<Tabs defaultSelectedIndex={0} unmountScroll>
+			<TabList>
+				<Tab>Cats</Tab>
+				<Tab>Dogs</Tab>
+				<Tab disabled>Horses</Tab>
+				<Tab>Cows</Tab>
+				<Tab>Beavers</Tab>
 			</TabList>
 			<TabPanels>
 				<TabPanel>Cats content</TabPanel>

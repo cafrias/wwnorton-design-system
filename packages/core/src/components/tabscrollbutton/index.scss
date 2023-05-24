@@ -23,6 +23,11 @@
 	@include device.media-up('sm') {
 		display: none;
 	}
+
+	&:disabled,
+	&.disabled {
+		color: var(--nds-disabled-color-darker);
+	}
 }
 
 @mixin contained {

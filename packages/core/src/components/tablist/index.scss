@@ -4,7 +4,6 @@
 @mixin base {
 	display: flex;
 	overflow-x: hidden;
-	border-bottom: 1px solid var(--nds-navy-40);
 	flex-grow: 2;
 
 	@include device.media-up('sm') {
@@ -17,11 +16,18 @@
 }
 
 @mixin centered {
-	justify-content: center;
+	@include device.media-up('sm') {
+		justify-content: center;
+	}
 }
 
 @mixin style {
 	@include util.declare('tab-list') {
+		.nds-tab-list-container {
+			display: flex;
+			border-bottom: 1px solid var(--nds-navy-40);
+		}
+
 		.nds-tab-list {
 			@include base;
 		}

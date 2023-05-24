@@ -3,43 +3,22 @@ import classNames from 'classnames';
 import { TabListProps, TabProps } from './types';
 import { TabScrollButton } from './TabScrollButton';
 import { useTabsState } from './context';
+import { useTabListScroll } from './useTabListScroll';
 
 const BASE_NAME = 'nds-tab-list';
 
 const styles = {
 	base: BASE_NAME,
+	container: `${BASE_NAME}-container`,
 	left: `${BASE_NAME}--left`,
 	centered: `${BASE_NAME}--centered`,
 };
 
-function useTabListScroll(ref: React.RefObject<HTMLDivElement>, scrollDelta = 100) {
-	const moveLeft = React.useCallback(() => {
-		if (!ref.current) {
-			return;
-		}
-
-		// eslint-disable-next-line no-param-reassign
-		ref.current.scrollLeft -= scrollDelta;
-	}, [ref, scrollDelta]);
-
-	const moveRight = React.useCallback(() => {
-		if (!ref.current) {
-			return;
-		}
-
-		// eslint-disable-next-line no-param-reassign
-		ref.current.scrollLeft += scrollDelta;
-	}, [ref, scrollDelta]);
-
-	return {
-		moveLeft,
-		moveRight,
-	};
-}
-
 export const TabList = ({ children }: TabListProps) => {
 	const tabListRef = React.useRef<HTMLDivElement>(null);
-	const { moveLeft, moveRight } = useTabListScroll(tabListRef);
+	const {
+		moveLeft, moveRight, atMinScroll, atMaxScroll,
+	} = useTabListScroll(tabListRef);
 	const { align } = useTabsState();
 
 	const className = classNames(
@@ -51,8 +30,8 @@ export const TabList = ({ children }: TabListProps) => {
 	);
 
 	return (
-		<div style={{ display: 'flex' }}>
-			<TabScrollButton type="left" onClick={moveLeft} />
+		<div className={styles.container}>
+			<TabScrollButton type="left" onClick={moveLeft} disabled={atMinScroll} />
 			<div ref={tabListRef} className={className} role="tablist">
 				{React.Children.map(children, (child, index: number) => {
 					if (!React.isValidElement<TabProps>(child)) {
@@ -64,7 +43,7 @@ export const TabList = ({ children }: TabListProps) => {
 					});
 				})}
 			</div>
-			<TabScrollButton type="right" onClick={moveRight} />
+			<TabScrollButton type="right" onClick={moveRight} disabled={atMaxScroll} />
 		</div>
 	);
 };
