@@ -1,8 +1,15 @@
 @use '../../util';
+@use '../../device/' as device;
 
 @mixin base {
 	display: flex;
+	overflow-x: hidden;
 	border-bottom: 1px solid var(--nds-navy-40);
+	flex-grow: 2;
+
+	@include device.media-up('sm') {
+		overflow-x: auto;
+	}
 }
 
 @mixin style {

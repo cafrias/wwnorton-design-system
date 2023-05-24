@@ -20,18 +20,24 @@ export default {
 } as Meta<TabsProps>;
 
 export const Uncontrolled = () => (
-	<Tabs defaultSelectedIndex={0}>
-		<TabList>
-			<Tab>Cats</Tab>
-			<Tab>Dogs</Tab>
-			<Tab disabled>Horses</Tab>
-		</TabList>
-		<TabPanels>
-			<TabPanel>Cats content</TabPanel>
-			<TabPanel>Dogs content</TabPanel>
-			<TabPanel>Horses content</TabPanel>
-		</TabPanels>
-	</Tabs>
+	<div style={{ maxWidth: '960px' }}>
+		<Tabs defaultSelectedIndex={0}>
+			<TabList>
+				<Tab>Cats</Tab>
+				<Tab>Dogs</Tab>
+				<Tab>Horses</Tab>
+				<Tab>Cows</Tab>
+				<Tab disabled>Beavers</Tab>
+			</TabList>
+			<TabPanels>
+				<TabPanel>Cats content</TabPanel>
+				<TabPanel>Dogs content</TabPanel>
+				<TabPanel>Horses content</TabPanel>
+				<TabPanel>Cows content</TabPanel>
+				<TabPanel>Beavers content</TabPanel>
+			</TabPanels>
+		</Tabs>
+	</div>
 );
 
 export const Controlled = ({ selectedIndex }: ControlledTabsProps) => {
@@ -41,7 +47,7 @@ export const Controlled = ({ selectedIndex }: ControlledTabsProps) => {
 	}, []);
 
 	return (
-		<div>
+		<div style={{ maxWidth: '960px' }}>
 			<Button onClick={() => setSelectedTabIndex(0)}>Switch to tab 1</Button>
 			<Button onClick={() => setSelectedTabIndex(1)}>Switch to tab 2</Button>
 			<Button onClick={() => setSelectedTabIndex(2)}>Switch to tab 3</Button>

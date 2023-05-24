@@ -15,6 +15,7 @@ const styles = {
 export const Tab = ({
 	index,
 	children,
+	disabled,
 }: TabProps) => {
 	if (index === undefined) {
 		throw new Error('Tab must be a child of TabList');
@@ -46,6 +47,7 @@ export const Tab = ({
 			aria-controls={panelId}
 			aria-selected={isSelected}
 			tabIndex={isSelected ? 0 : -1}
+			disabled={disabled}
 		>
 			{children}
 		</BaseButton>
