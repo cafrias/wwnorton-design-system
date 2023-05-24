@@ -1,0 +1,108 @@
+---
+title: Tabs
+description: TODO
+---
+
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@wwnds/react';
+
+> [TODO]
+
+## Anatomy
+
+[TODO]
+
+## Usage
+
+[TODO]
+
+## React API
+
+[TODO]
+
+### Tabs
+
+```js
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@wwnds/react';
+```
+
+```tsx live
+<Tabs defaultSelectedIndex={0}>
+	<TabList>
+		<Tab>Cats</Tab>
+		<Tab>Dogs</Tab>
+		<Tab disabled>Horses</Tab>
+		<Tab>Cows</Tab>
+		<Tab>Beavers</Tab>
+	</TabList>
+	<TabPanels>
+		<TabPanel>Cats content</TabPanel>
+		<TabPanel>Dogs content</TabPanel>
+		<TabPanel>Horses content</TabPanel>
+		<TabPanel>Cows content</TabPanel>
+		<TabPanel>Beavers content</TabPanel>
+	</TabPanels>
+</Tabs>
+```
+
+### Unmounted scroll buttons
+
+```tsx live
+<Tabs unmountScroll>
+	<TabList>
+		<Tab>Cats</Tab>
+		<Tab>Dogs</Tab>
+		<Tab disabled>Horses</Tab>
+		<Tab>Cows</Tab>
+		<Tab>Beavers</Tab>
+	</TabList>
+	<TabPanels>
+		<TabPanel>Cats content</TabPanel>
+		<TabPanel>Dogs content</TabPanel>
+		<TabPanel>Horses content</TabPanel>
+		<TabPanel>Cows content</TabPanel>
+		<TabPanel>Beavers content</TabPanel>
+	</TabPanels>
+</Tabs>
+```
+
+### Centered Alignment
+
+```tsx live
+<Tabs align="center">
+	<TabList>
+		<Tab>Cats</Tab>
+		<Tab>Dogs</Tab>
+		<Tab>Horses</Tab>
+		<Tab>Cows</Tab>
+		<Tab>Beavers</Tab>
+	</TabList>
+	<TabPanels>
+		<TabPanel>Cats content</TabPanel>
+		<TabPanel>Dogs content</TabPanel>
+		<TabPanel>Horses content</TabPanel>
+		<TabPanel>Cows content</TabPanel>
+		<TabPanel>Beavers content</TabPanel>
+	</TabPanels>
+</Tabs>
+```
+
+### Line Variant
+
+```tsx live
+<Tabs variant="line">
+	<TabList>
+		<Tab>Cats</Tab>
+		<Tab>Dogs</Tab>
+		<Tab disabled>Horses</Tab>
+		<Tab>Cows</Tab>
+		<Tab>Beavers</Tab>
+	</TabList>
+	<TabPanels>
+		<TabPanel>Cats content</TabPanel>
+		<TabPanel>Dogs content</TabPanel>
+		<TabPanel>Horses content</TabPanel>
+		<TabPanel>Cows content</TabPanel>
+		<TabPanel>Beavers content</TabPanel>
+	</TabPanels>
+</Tabs>
+```
