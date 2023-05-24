@@ -89,6 +89,27 @@ export const Centered = () => (
 	</div>
 );
 
+export const Line = () => (
+	<div style={{ maxWidth: '960px' }}>
+		<Tabs variant="line" defaultSelectedIndex={0}>
+			<TabList>
+				<Tab>Cats</Tab>
+				<Tab>Dogs</Tab>
+				<Tab>Horses</Tab>
+				<Tab>Cows</Tab>
+				<Tab disabled>Beavers</Tab>
+			</TabList>
+			<TabPanels>
+				<TabPanel>Cats content</TabPanel>
+				<TabPanel>Dogs content</TabPanel>
+				<TabPanel>Horses content</TabPanel>
+				<TabPanel>Cows content</TabPanel>
+				<TabPanel>Beavers content</TabPanel>
+			</TabPanels>
+		</Tabs>
+	</div>
+);
+
 Controlled.args = {
 	selectedIndex: 1,
 };

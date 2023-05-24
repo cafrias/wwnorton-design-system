@@ -19,6 +19,7 @@
 	display: inline-flex;
 	box-sizing: border-box;
 	padding: var(--nds-tab-padding-y) var(--nds-tab-padding-x);
+	margin-right: 0.1rem;
 	border: 0 solid transparent;
 	border-top: var(--nds-tab-border-width) solid transparent;
 	border-bottom: var(--nds-tab-border-width) solid transparent;
@@ -27,6 +28,10 @@
 	align-items: center;
 
 	@include type.ui-base;
+
+	&:last-child {
+		margin-right: 0;
+	}
 
 	&:disabled,
 	&.disabled {
@@ -59,12 +64,6 @@
 		$background-color: var(--nds-gray-30),
 	);
 
-	margin-right: 0.1rem;
-
-	&:last-child {
-		margin-right: 0;
-	}
-
 	&:disabled,
 	&.disabled {
 		color: var(--nds-gray-50);
@@ -87,6 +86,33 @@
 	}
 }
 
+@mixin line {
+	@include variant(
+		$text-color: var(--nds-navy-90),
+		$background-color: var(--nds-white),
+	);
+
+	&:disabled,
+	&.disabled {
+		color: var(--nds-gray-30);
+	}
+
+	&:not(:disabled):not(.disabled).selected {
+		font-weight: bold;
+		border-bottom: 4px solid var(--nds-teal-50);
+	}
+
+	&:not(:disabled):not(.disabled):hover,
+	&:not(:disabled):not(.disabled).hover {
+		background-color: var(--nds-navy-10);
+	}
+
+	&:not(:disabled):not(.disabled):active,
+	&:not(:disabled):not(.disabled).active {
+		background-color: var(--nds-gray-20);
+	}
+}
+
 @mixin style {
 	@include util.declare('tab') {
 		.nds-tab {
@@ -95,6 +121,10 @@
 
 		.nds-tab--contained {
 			@include contained;
+		}
+
+		.nds-tab--line {
+			@include line;
 		}
 	}
 }

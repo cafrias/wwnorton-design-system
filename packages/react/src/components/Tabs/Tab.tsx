@@ -9,6 +9,7 @@ const BASE_NAME = 'nds-tab';
 const styles = {
 	base: BASE_NAME,
 	contained: `${BASE_NAME}--contained`,
+	line: `${BASE_NAME}--line`,
 	selected: 'selected',
 };
 
@@ -33,7 +34,8 @@ export const Tab = ({
 	const panelId = useTabPanelId(index);
 
 	const className = classNames(BASE_NAME, {
-		[styles.contained]: true,
+		[styles.contained]: state.variant === 'contained',
+		[styles.line]: state.variant === 'line',
 		[styles.selected]: isSelected,
 	});
 
