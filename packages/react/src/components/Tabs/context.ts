@@ -13,7 +13,6 @@ function useInitCommonTabsState({
 	align,
 	idPrefix: userSetIdPrefix,
 	variant,
-	unmountScroll,
 }: CommonTabsProps): Omit<TabsState, 'selectedTabIndex' | 'setSelectedTabIndex'> {
 	const generatedIdPrefix = useId() as string;
 	const idPrefix = userSetIdPrefix || generatedIdPrefix;
@@ -22,8 +21,7 @@ function useInitCommonTabsState({
 		idPrefix,
 		align: align || 'left',
 		variant: variant || 'contained',
-		unmountScroll: unmountScroll || false,
-	}), [align, idPrefix, variant, unmountScroll]);
+	}), [align, idPrefix, variant]);
 }
 
 export function useInitUncontrolledTabsState({

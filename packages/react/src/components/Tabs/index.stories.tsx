@@ -6,6 +6,7 @@ import {
 	ControlledTabsProps,
 } from '.';
 import { Button } from '../Button';
+import { Link } from '../Link';
 
 export default {
 	title: 'Tabs',
@@ -28,6 +29,8 @@ export const Uncontrolled = () => (
 				<Tab disabled>Horses</Tab>
 				<Tab>Cows</Tab>
 				<Tab>Beavers</Tab>
+				<Tab>Camels</Tab>
+				<Tab>Myxococcus llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogochensis</Tab>
 			</TabList>
 			<TabPanels>
 				<TabPanel>Cats content</TabPanel>
@@ -39,6 +42,17 @@ export const Uncontrolled = () => (
 					<Button onClick={() => console.log('Moo!')}>Moo!</Button>
 				</TabPanel>
 				<TabPanel>Beavers content</TabPanel>
+				<TabPanel>Camels content</TabPanel>
+				<TabPanel>
+					Myxococcus llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogochensis content.
+					{' '}
+					<Link
+						external
+						href="https://en.wikipedia.org/wiki/Myxococcus_llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogochensis"
+					>
+						Wiki page
+					</Link>
+				</TabPanel>
 			</TabPanels>
 		</Tabs>
 	</div>
@@ -96,27 +110,6 @@ export const Centered = () => (
 export const Line = () => (
 	<div style={{ maxWidth: '960px' }}>
 		<Tabs variant="line" defaultSelectedIndex={0}>
-			<TabList>
-				<Tab>Cats</Tab>
-				<Tab>Dogs</Tab>
-				<Tab disabled>Horses</Tab>
-				<Tab>Cows</Tab>
-				<Tab>Beavers</Tab>
-			</TabList>
-			<TabPanels>
-				<TabPanel>Cats content</TabPanel>
-				<TabPanel>Dogs content</TabPanel>
-				<TabPanel>Horses content</TabPanel>
-				<TabPanel>Cows content</TabPanel>
-				<TabPanel>Beavers content</TabPanel>
-			</TabPanels>
-		</Tabs>
-	</div>
-);
-
-export const unmountScroll = () => (
-	<div style={{ maxWidth: '960px' }}>
-		<Tabs defaultSelectedIndex={0} unmountScroll>
 			<TabList>
 				<Tab>Cats</Tab>
 				<Tab>Dogs</Tab>

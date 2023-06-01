@@ -18,7 +18,6 @@ export type CommonTabsProps = React.PropsWithChildren<{
 	idPrefix?: string;
 	align?: 'left' | 'center';
 	variant?: 'contained' | 'line';
-	unmountScroll?: boolean;
 }>;
 
 export type TabListProps = React.ComponentPropsWithRef<'div'> & {
@@ -45,5 +44,4 @@ export interface TabsState {
 	setSelectedTabIndex: (index: number) => void;
 	variant: NonNullable<CommonTabsProps['variant']>;
 	align: NonNullable<CommonTabsProps['align']>;
-	unmountScroll: NonNullable<CommonTabsProps['unmountScroll']>;
 }

@@ -1,5 +1,3 @@
-import _defer from 'lodash/defer';
-
 const focusableSelectors = [
 	'[contentEditable=true]:not([tabindex="-1"])',
 	'[tabindex]:not([tabindex="-1"])',
@@ -32,9 +30,7 @@ export function moveFocusToTabPanel(id: string) {
 	const firstFocusable = getFocusable(tabPanel)[0];
 	if (firstFocusable) {
 		tabPanel.setAttribute('tabindex', '-1');
-		_defer(() => firstFocusable.focus());
 	} else {
 		tabPanel.setAttribute('tabindex', '0');
-		_defer(() => tabPanel.focus());
 	}
 }

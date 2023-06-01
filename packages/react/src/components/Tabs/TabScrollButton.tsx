@@ -22,7 +22,7 @@ const styles = {
 export const TabScrollButton = ({ type, onClick, disabled }: TabScrollButtonProps) => {
 	const text = type === 'left' ? 'Previous' : 'Next';
 	const icon = type === 'left' ? 'chevron-left' : 'chevron-right';
-	const { variant, unmountScroll } = useTabsState();
+	const { variant } = useTabsState();
 
 	const className = classNames(
 		styles.base,
@@ -32,7 +32,7 @@ export const TabScrollButton = ({ type, onClick, disabled }: TabScrollButtonProp
 		},
 	);
 
-	if (disabled && unmountScroll) {
+	if (disabled) {
 		return null;
 	}
 
@@ -42,7 +42,6 @@ export const TabScrollButton = ({ type, onClick, disabled }: TabScrollButtonProp
 			onClick={onClick}
 			aria-hidden
 			tabIndex={-1}
-			disabled={disabled}
 		>
 			<Icon variant={icon} />
 			<span className={styles.text}>{text}</span>
