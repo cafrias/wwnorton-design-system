@@ -20,6 +20,7 @@
 	box-sizing: border-box;
 	padding: var(--nds-tab-padding-y) var(--nds-tab-padding-x);
 	margin-right: 0.1rem;
+	white-space: nowrap;
 	border: 0 solid transparent;
 	border-top: var(--nds-tab-border-width) solid transparent;
 	border-bottom: var(--nds-tab-border-width) solid transparent;
