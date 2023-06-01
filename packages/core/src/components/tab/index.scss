@@ -14,6 +14,7 @@
 	--nds-tab-padding-x: #{tokens.$padding-x};
 	--nds-tab-padding-y: #{tokens.$padding-y};
 	--nds-tab-border-radius: #{tokens.$border-radius};
+	--nds-zindex-focus: 500;
 
 	position: relative;
 	display: inline-flex;

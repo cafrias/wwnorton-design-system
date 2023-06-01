@@ -4,6 +4,7 @@ import { TabListProps, TabProps } from './types';
 import { TabScrollButton } from './TabScrollButton';
 import { useTabsState } from './context';
 import { useTabListScroll } from './useTabListScroll';
+import { useTabKeyboardNavigation } from './useTabKeyboardNavigation';
 
 const BASE_NAME = 'nds-tab-list';
 
@@ -16,9 +17,13 @@ const styles = {
 
 export const TabList = ({ children }: TabListProps) => {
 	const tabListRef = React.useRef<HTMLDivElement>(null);
+
+	useTabKeyboardNavigation(tabListRef);
+
 	const {
 		moveLeft, moveRight, atMinScroll, atMaxScroll,
 	} = useTabListScroll(tabListRef);
+
 	const { align } = useTabsState();
 
 	const className = classNames(
