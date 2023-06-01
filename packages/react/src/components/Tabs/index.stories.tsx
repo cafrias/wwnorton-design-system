@@ -33,7 +33,11 @@ export const Uncontrolled = () => (
 				<TabPanel>Cats content</TabPanel>
 				<TabPanel>Dogs content</TabPanel>
 				<TabPanel>Horses content</TabPanel>
-				<TabPanel>Cows content</TabPanel>
+				<TabPanel>
+					Cows content
+					{' '}
+					<Button onClick={() => console.log('Moo!')}>Moo!</Button>
+				</TabPanel>
 				<TabPanel>Beavers content</TabPanel>
 			</TabPanels>
 		</Tabs>

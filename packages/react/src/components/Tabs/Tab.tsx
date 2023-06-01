@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { BaseButton } from '../BaseButton';
 import { TabProps } from './types';
 import { useTabId, useTabPanelId, useTabsState } from './context';
+import { moveFocusToTabPanel } from './utils';
 
 const BASE_NAME = 'nds-tab';
 
@@ -22,20 +23,21 @@ export const Tab = ({
 		throw new Error('Tab must be a child of TabList');
 	}
 
-	const state = useTabsState();
+	const { variant, selectedTabIndex, setSelectedTabIndex } = useTabsState();
 
-	const isSelected = index === state.selectedTabIndex;
-
-	const onClick = useCallback(() => {
-		state.setSelectedTabIndex(index);
-	}, [index, state]);
+	const isSelected = index === selectedTabIndex;
 
 	const tabId = useTabId(index);
 	const panelId = useTabPanelId(index);
 
+	const onClick = useCallback(() => {
+		setSelectedTabIndex(index);
+		moveFocusToTabPanel(panelId);
+	}, [index, setSelectedTabIndex, panelId]);
+
 	const className = classNames(BASE_NAME, {
-		[styles.contained]: state.variant === 'contained',
-		[styles.line]: state.variant === 'line',
+		[styles.contained]: variant === 'contained',
+		[styles.line]: variant === 'line',
 		[styles.selected]: isSelected,
 	});
 
