@@ -9,26 +9,33 @@
 @use '../../spacing';
 @use '../../util';
 
-@mixin base {
-	--nds-tab-border-width: #{tokens.$border-width};
-	--nds-tab-padding-x: #{tokens.$padding-x};
-	--nds-tab-padding-y: #{tokens.$padding-y};
-	--nds-tab-border-radius: #{tokens.$border-radius};
-	--nds-zindex-focus: 500;
-
-	position: relative;
+@mixin inline-flex-centered {
 	display: inline-flex;
-	box-sizing: border-box;
-	padding: var(--nds-tab-padding-y) var(--nds-tab-padding-x);
-	margin-right: 0.1rem;
-	white-space: nowrap;
-	border: 0 solid transparent;
-	border-top: var(--nds-tab-border-width) solid transparent;
-	border-bottom: var(--nds-tab-border-width) solid transparent;
-	border-radius: var(--nds-tab-border-radius);
 	justify-content: center;
 	align-items: center;
+}
 
+@mixin base {
+	--nds-border-width: #{tokens.$border-width};
+	--nds-padding-x: #{tokens.$padding-x};
+	--nds-padding-y: #{tokens.$padding-y};
+	--nds-border-radius: #{tokens.$border-radius};
+	--nds-selected-border: #{tokens.$selected-border};
+	--nds-border-y: #{tokens.$border-y};
+	--nds-base-border: #{tokens.$border-base};
+	--nds-zindex-focus: 9999;
+
+	position: relative;
+	box-sizing: border-box;
+	padding: var(--nds-padding-y) var(--nds-padding-x);
+	margin-right: 0.1rem;
+	white-space: nowrap;
+	border: var(--nds-base-border);
+	border-top: var(--nds-border-y);
+	border-bottom: var(--nds-border-y);
+	border-radius: var(--nds-border-radius);
+
+	@include inline-flex-centered;
 	@include type.ui-base;
 
 	&:last-child {
@@ -40,30 +47,27 @@
 		color: var(--nds-disabled-color);
 		cursor: not-allowed;
 	}
+
+	&:focus {
+		position: relative;
+	}
 }
 
-@mixin variant(
-	$text-color: null,
-	$background-color: null,
-) {
+@mixin variant($text-color: null, $background-color: null) {
 	font-size: var(--nds-font-size-sm);
 	color: $text-color;
 	cursor: pointer;
 	background-color: $background-color;
 	transition:
 		motion.transition(
-			color
-			background-color
-			border-color
-			border-radius
-			box-shadow
+			color background-color border-color border-radius box-shadow
 		);
 }
 
 @mixin contained {
 	@include variant(
 		$text-color: var(--nds-navy-90),
-		$background-color: var(--nds-gray-30),
+		$background-color: var(--nds-gray-30)
 	);
 
 	&:disabled,
@@ -72,9 +76,9 @@
 	}
 
 	&:not(:disabled):not(.disabled).selected {
-		font-weight: bold;
+		font-weight: var(--nds-font-weight-bold);
 		background-color: var(--nds-gray-10);
-		border-bottom: 4px solid var(--nds-teal-50);
+		border-bottom: var(--nds-selected-border);
 	}
 
 	&:not(:disabled):not(.disabled):hover,
@@ -90,8 +94,8 @@
 
 @mixin line {
 	@include variant(
-		$text-color: var(--nds-navy-90),
-		$background-color: transparent,
+		$text-color: var(--nds-text-color),
+		$background-color: transparent
 	);
 
 	&:disabled,
@@ -100,13 +104,13 @@
 	}
 
 	&:not(:disabled):not(.disabled).selected {
-		font-weight: bold;
-		border-bottom: 4px solid var(--nds-teal-50);
+		font-weight: var(--nds-font-weight-bold);
+		border-bottom: var(--nds-selected-border);
 	}
 
 	&:not(:disabled):not(.disabled):hover,
 	&:not(:disabled):not(.disabled).hover {
-		background-color: var(--nds-navy-10);
+		background-color: var(--nds-base-color-10);
 	}
 
 	&:not(:disabled):not(.disabled):active,
